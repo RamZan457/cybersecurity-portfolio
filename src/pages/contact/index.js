@@ -12,14 +12,20 @@ export const ContactUs = () => {
     name: "",
     message: "",
     loading: false,
-    show: false,
-    alertmessage: "",
-    variant: "",
+    alert: {
+      message: "",
+      variant: "success", // Default to success, change as needed
+      show: false,
+    },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormdata({ loading: true });
+
+    setFormdata((prevData) => ({
+      ...prevData,
+      loading: true,
+    }));
 
     const templateParams = {
       from_name: formData.email,
@@ -28,42 +34,44 @@ export const ContactUs = () => {
       message: formData.message,
     };
 
-    emailjs
-      .send(
+    try {
+      await emailjs.send(
         contactConfig.YOUR_SERVICE_ID,
         contactConfig.YOUR_TEMPLATE_ID,
         templateParams,
-        contactConfig.YOUR_USER_ID
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setFormdata({
-            loading: false,
-            alertmessage: "SUCCESS! , Looking forward to reading your email.",
-            variant: "success",
-            show: true,
-          });
-        },
-        (error) => {
-          console.log(error.text);
-          setFormdata({
-            alertmessage: `Failed to send!,${error.text}`,
-            variant: "danger",
-            show: true,
-          });
-          document.getElementsByClassName("co_alert")[0].scrollIntoView();
-        }
+        contactConfig.YOUR_PUBLIC_KEY // Using new public key
       );
+
+      setFormdata((prevData) => ({
+        ...prevData,
+        loading: false,
+        alert: {
+          message: "SUCCESS! Looking forward to reading your email.",
+          variant: "success",
+          show: true,
+        },
+      }));
+    } catch (error) {
+      console.error(error);
+
+      setFormdata((prevData) => ({
+        ...prevData,
+        loading: false,
+        alert: {
+          message: `Failed to send! ${error.text}`,
+          variant: "danger",
+          show: true,
+        },
+      }));
+    }
   };
 
   const handleChange = (e) => {
-    setFormdata({
-      ...formData,
+    setFormdata((prevData) => ({
+      ...prevData,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
-
   return (
     <HelmetProvider>
       <Container>

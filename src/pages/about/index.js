@@ -7,6 +7,7 @@ import {
   meta,
   worktimeline,
   skills,
+  resume,
 } from "../../content_option";
 
 export const About = () => {
@@ -34,6 +35,7 @@ export const About = () => {
             </div>
           </Col>
         </Row>
+
         <Row className=" sec_sp">
           <Col lg="5">
             <h3 className="color_sec py-4">Work Timeline</h3>
@@ -68,6 +70,32 @@ export const About = () => {
                     </Card.Body>
                   </Card>
                 </div>
+              );
+            })}
+          </Col>
+        </Row>
+
+        {/* Normal add */}
+        <Row className="sec_sp">
+          <Col lg="5">
+            <h3 className="color_sec">Resume</h3>
+          </Col>
+          <Col lg="7">
+            {resume.map((resume, i) => {
+              return (
+                <table>
+                  <tr>
+                    <th scope="row">
+                      <a
+                        href={resume.resume_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Resume
+                      </a>
+                    </th>
+                  </tr>
+                </table>
               );
             })}
           </Col>
