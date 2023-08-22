@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/cybersecurity-portfolio/static/css/main.872a5b58.css",
+    "main.js": "/cybersecurity-portfolio/static/js/main.6b5ed86d.js",
+    "index.html": "/cybersecurity-portfolio/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.872a5b58.css",
+    "static/js/main.6b5ed86d.js"
+  ]
+}
