@@ -28,7 +28,7 @@ const dataabout = {
 };
 const worktimeline = [
   {
-    jobtitle: "IT Technical Support",
+    jobtitle: "Full Stack MERN DEVELOPER",
     where: "IdrakAI",
     date: "2023",
   },
@@ -41,7 +41,7 @@ const worktimeline = [
 const resume = [
   {
     resume_url:
-      "https://www.canva.com/design/DAFUXHV349k/xQfY3cR3DWRMVgAutniRdg/edit?utm_content=DAFUXHV349k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+      "https://www.canva.com/design/DAFzSriq5H4/HSP0EdWTTBBHGjnlYBT1DA/edit?utm_content=DAFzSriq5H4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
   },
 ];
 
